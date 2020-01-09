@@ -3,7 +3,7 @@ var pages = [
   'https://weather.com/',
   'https://wsj.com',
   'https://twitter.com/home',
-  'https://www.linkedin.com/'
+  'http://localhost:3000/'
 ]
 
 var p = pages.length;
@@ -22,11 +22,21 @@ while(--p > -1){
 		a.href = pages[p];  // assing url attribute to hyperlink element.
 		pages[p] = a;     // set  an element of the page as the hyperlink element
 	}
-
-  setPage(p);     // invoke the function. 
-
+  setPage(p);
 }
 
+// function loadIframe() {
+//   var page = pages[(p = ++p % pages.length)];
+//   var bust = 'bustcache=' + new Date().getTime();
+//
+//   page = page.search ? page.href + '&' + bust : page.href + '?' + bust;
+//
+//   document.getElementById('if_one').src = page;
+//
+//   setTimeout(loadIframe, 10000);
+// }
+
+// debugger
 function loadIframe() {
   var page = pages[(p = ++p % pages.length)];
   var bust = 'bustcache=' + new Date().getTime();
@@ -35,7 +45,10 @@ function loadIframe() {
 
   document.getElementById('if_one').src = page;
 
-  setTimeout(loadIframe, 10000);
+  // debugger
+  setTimeout(loadIframe, 20000);  // recusive
 }
+
+
 
 loadIframe();
