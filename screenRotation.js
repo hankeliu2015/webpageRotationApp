@@ -1,9 +1,9 @@
 
 var pages = [
   'https://weather.com/',
+  'https://nytimes.com',
   'https://wsj.com',
-  'https://twitter.com/home',
-  'http://localhost:3000/'
+  'https://nypost.com',
 ]
 
 var p = pages.length;
@@ -37,16 +37,22 @@ while(--p > -1){
 // }
 
 // debugger
+
 function loadIframe() {
   var page = pages[(p = ++p % pages.length)];
   var bust = 'bustcache=' + new Date().getTime();
+  var newDate = new Date().getTime();
 
-  page = page.search ? page.href + '&' + bust : page.href + '?' + bust;
+  // page = page.search ? page.href + '&' + bust : page.href + '?' + bust;
+  // page = page.href + '?' + bust;
+  page = page.href + "&output=embed";
+  // window.location.replace(page);
 
   document.getElementById('if_one').src = page;
+  // document.getElementById('if_one').target = "_parent";
+  document.getElementById('if_one').name = newDate;
 
-  // debugger
-  setTimeout(loadIframe, 20000);  // recusive
+  setTimeout(loadIframe, 5000);  // recusive
 }
 
 
