@@ -3,7 +3,7 @@ var pages = [
   'https://weather.com/',
   'https://nytimes.com',
   'https://wsj.com',
-  'https://nypost.com',
+  'https://yahoo.com',
 ]
 
 var p = pages.length;
@@ -42,17 +42,17 @@ function loadIframe() {
   var page = pages[(p = ++p % pages.length)];
   var bust = 'bustcache=' + new Date().getTime();
   var newDate = new Date().getTime();
+  
 
   // page = page.search ? page.href + '&' + bust : page.href + '?' + bust;
-  // page = page.href + '?' + bust;
-  page = page.href + "&output=embed";
+  page = page.href + '?' + bust;
+  // page = page.href + "&output=embed";
   // window.location.replace(page);
-
   document.getElementById('if_one').src = page;
   // document.getElementById('if_one').target = "_parent";
-  document.getElementById('if_one').name = newDate;
+  // document.getElementById('if_one').name = newDate;
 
-  setTimeout(loadIframe, 5000);  // recusive
+  setTimeout(loadIframe, 8000);  // recusive
 }
 
 
